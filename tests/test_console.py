@@ -36,9 +36,9 @@ class TestHBNBCommand(unittest.TestCase):
     def test_create(self):
         """Method to test do_create functionality"""
 
-        with patch("sys.stdout", new=StringIO()) as mock_stdout:
+        with patch('sys.stdout', new=StringIO()) as f:
             self.command.onecmd("create BaseModel")
-            self.assertTrue(mock_stdout.getvalue().strip() != "")
+            self.assertTrue(f.getvalue().strip() != "")
 
     def test_show(self):
         """Method to test do_show functionality"""
@@ -46,10 +46,10 @@ class TestHBNBCommand(unittest.TestCase):
         obj = BaseModel()
         key = "{}.{}".format(type(obj).__name__, obj.id)
 
-        with patch("sys.stdout", new=StringIO()) as mock_stdout:
+        with patch('sys.stdout', new=StringIO()) as f:
             self.command.onecmd("show BaseModel {}".format(obj.id))
-            self.assertTrue(mock_stdout.getvalue().strip() != "")
-            self.assertEqual(mock_stdout.getvalue().strip(), str(obj))
+            self.assertTrue(f.getvalue().strip() != "")
+            self.assertEqual(f.getvalue().strip(), str(obj))
 
     def test_destroy(self):
         """Method to test do_destroy functionality"""
@@ -57,16 +57,16 @@ class TestHBNBCommand(unittest.TestCase):
         obj = BaseModel()
         key = "{}.{}".format(type(obj).__name__, obj.id)
 
-        with patch("sys.stdout", new=StringIO()) as mock_stdout:
+        with patch('sys.stdout', new=StringIO()) as f:
             self.command.onecmd("destroy BaseModel {}".format(obj.id))
             self.assertTrue(key not in storage.all())
 
     def test_all(self):
         """Method to test do_all functionality"""
 
-        with patch("sys.stdout", new=StringIO()) as mock_stdout:
+        with patch('sys.stdout', new=StringIO()) as f:
             self.command.onecmd("all")
-            self.assertTrue(mock_stdout.getvalue().strip() != "")
+            self.assertTrue(f.getvalue().strip() != "")
 
     def test_update(self):
         """Method to test do_update functionality"""
@@ -74,7 +74,7 @@ class TestHBNBCommand(unittest.TestCase):
         obj = BaseModel()
         key = "{}.{}".format(type(obj).__name__, obj.id)
 
-        with patch("sys.stdout", new=StringIO()) as mock_stdout:
+        with patch('sys.stdout', new=StringIO()) as f:
             self.command.onecmd("update BaseModel {} name test".format(obj.id))
             self.assertEqual(obj.name, "test")
 
@@ -83,9 +83,9 @@ class TestHBNBCommand(unittest.TestCase):
 
         obj = BaseModel()
 
-        with patch("sys.stdout", new=StringIO()) as mock_stdout:
+        with patch('sys.stdout', new=StringIO()) as f:
             self.command.onecmd("BaseModel.count()")
-            self.assertEqual(int(mock_stdout.getvalue().strip()), 1)
+            self.assertEqual(int(f.getvalue().strip()), 1)
 
 
 if __name__ == '__main__':

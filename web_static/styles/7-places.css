@@ -1,0 +1,27 @@
+.places {
+  margin-top: 30px;
+}
+
+.places h1 {
+  font-size: 30px;
+  text-align: left;
+  margin-left: 15px;
+}
+
+article {
+  width: 390px;
+  margin: 20px;
+  padding: 20px;
+  border: 1px #ff5a5f solid;
+  border-radius: 4px;
+  display: inline-block;
+}
+
+article:last-of-type {
+  margin-left: 260px;
+}
+
+article h2 {
+  font-size: 30px;
+  text-align: center;
+}

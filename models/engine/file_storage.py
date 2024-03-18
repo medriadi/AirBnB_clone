@@ -48,7 +48,7 @@ class FileStorage:
         with open(FileStorage.__file_path, "r", encoding="utf-8") as file:
             try:
                 my_dict = json.load(file)
-            except ValueError:
+            except:
                 return
             my_dict = {key: self.classes()[value["__class__"]](**value)
                        for key, value in my_dict.items()}

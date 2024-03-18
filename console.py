@@ -15,7 +15,7 @@ class HBNBCommand(cmd.Cmd):
     prompt = "(hbnb) "
 
     def default(self, line):
-        if not re.search("\\.(\\w+)\\(", line):
+        if not re.search("\.(\w+)\(", line):
             return
         obj_name = line.split(".")[0]
         cmnd = line.split(".")[1].split("(")[0]
